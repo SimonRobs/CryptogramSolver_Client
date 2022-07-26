@@ -1,0 +1,28 @@
+<div class="container">
+    <div class="keyboard-row" *ngFor="let row of keyboardRows">
+        <div
+            role="button"
+            *ngFor="let key of row"
+            [ngClass]="getKeyClasses(key)"
+            (click)="handleKeyPress(key)"
+        >
+            {{ getKeyContent(key) }}
+        </div>
+    </div>
+    <div class="keyboard-row actions">
+        <div
+            role="button"
+            class="keyboard-key space"
+            (click)="handleKeyPress(' ')"
+        >
+            space
+        </div>
+        <div
+            role="button"
+            class="keyboard-key enter"
+            (click)="handleKeyPress('enter')"
+        >
+            {{ actionTitle }}
+        </div>
+    </div>
+</div>

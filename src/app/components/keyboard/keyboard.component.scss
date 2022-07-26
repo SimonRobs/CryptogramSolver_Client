@@ -1,0 +1,62 @@
+@import '../../../variables.scss';
+
+.container {
+    max-width: 512px;
+    row-gap: 8px;
+    margin: auto;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+}
+
+.keyboard-row {
+    display: flex;
+    column-gap: 8px;
+    margin: 0 8px 8px 8px;
+
+    &.actions div {
+        text-transform: none;
+    }
+}
+
+.keyboard-key {
+    font-family: Arial, Helvetica, sans-serif;
+    touch-action: manipulation;
+    cursor: pointer;
+    display: flex;
+    font-size: medium;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    text-transform: uppercase;
+    height: 54px;
+    border-radius: 4px;
+    background-color: $background-color-light;
+
+    &:hover {
+        filter: brightness(0.98);
+    }
+    &:active {
+        filter: brightness(1.05);
+    }
+
+    &.spacer1 {
+        background-color: inherit;
+        flex-grow: 0.5;
+    }
+    &.spacer2 {
+        background-color: inherit;
+        flex-grow: 2;
+    }
+    &.delete {
+        flex-grow: 2;
+    }
+    &.space {
+        flex-grow: 9;
+    }
+    &.enter {
+        flex-grow: 2;
+        background-color: $primary-color;
+        color: $primary-contrast-color;
+    }
+}

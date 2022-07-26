@@ -1,1 +1,38 @@
-/* You can add global styles to this file, and also import other style files */
+@import './variables.scss';
+
+html,
+body {
+    font-family: Consolas, monaco, monospace;
+    color: $text-color;
+    text-align: center;
+    background-color: $background-color;
+    margin: 0 auto;
+    height: 100%;
+    width: 100%;
+}
+
+h1 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    line-height: 1.5em;
+}
+h3 {
+    font-size: 1rem;
+    font-weight: 700;
+}
+p {
+    font-size: 1rem;
+    font-weight: 400;
+}
+blockquote {
+    font-size: 1.2rem;
+    font-weight: 400;
+}
+pre {
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+input {
+    color: $text-color;
+}

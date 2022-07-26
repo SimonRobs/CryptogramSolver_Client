@@ -1,0 +1,15 @@
+<div class="root">
+    <input
+        maxlength="1"
+        class="value"
+        placeholder="_"
+        [value]="value"
+        (keyup)="handleKeyUp($event.key, valueChange)"
+    />
+    <input
+        maxlength="1"
+        class="key"
+        [value]="key"
+        (keyup)="handleKeyUp($event.key, keyChange)"
+    />
+</div>

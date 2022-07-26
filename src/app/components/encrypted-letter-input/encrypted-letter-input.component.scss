@@ -1,0 +1,36 @@
+@import '../../../variables.scss';
+
+.root {
+    display: grid;
+    grid-template-rows: auto auto;
+}
+
+input {
+    font-size: 2rem;
+    width: 2rem;
+    background: none;
+    border: 1px solid transparent;
+    text-align: center;
+    outline: none;
+    text-transform: uppercase;
+    caret-color: transparent;
+
+    &:focus {
+        background-color: darken($color: $background-color, $amount: 2%);
+        border-radius: 8px;
+        border: 1px solid #acacac;
+        color: $primary-color;
+    }
+
+    &.value:focus::placeholder {
+        color: $primary-color;
+    }
+    &.value:not(:focus)::placeholder {
+        color: $text-color;
+    }
+
+    &.key {
+        font-size: 1.5rem;
+        color: #999;
+    }
+}
