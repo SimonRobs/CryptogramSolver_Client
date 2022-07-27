@@ -15,19 +15,11 @@ import {
     styleUrls: ['./encrypted-letter-input.component.scss'],
 })
 export class EncryptedLetterInputComponent {
+    @Input() focused: 'value' | 'key' | null = null;
+
     @Input() value: string | undefined;
     @Output() valueChange = new EventEmitter<string>();
 
     @Input() key: string | undefined;
     @Output() keyChange = new EventEmitter<string>();
-
-    handleKeyUp(key: string, changeEmitter: EventEmitter<string>) {
-        const isBackspace = key === 'Backspace';
-        if (!isBackspace && !this.isAlphabet(key)) return;
-        changeEmitter.emit(isBackspace ? '' : key);
-    }
-
-    private isAlphabet(value: string): boolean {
-        return value.match(/^[A-Za-z]$/) !== null;
-    }
 }

@@ -1,15 +1,8 @@
 <div class="root">
-    <input
-        maxlength="1"
-        class="value"
-        placeholder="_"
-        [value]="value"
-        (keyup)="handleKeyUp($event.key, valueChange)"
-    />
-    <input
-        maxlength="1"
-        class="key"
-        [value]="key"
-        (keyup)="handleKeyUp($event.key, keyChange)"
-    />
+    <div class="value" [ngClass]="focused === 'value' ? 'focused' : ''">
+        {{ value && value.length > 0 ? value : '_' }}
+    </div>
+    <div class="key" [ngClass]="focused === 'key' ? 'focused' : ''">
+        {{ key }}
+    </div>
 </div>

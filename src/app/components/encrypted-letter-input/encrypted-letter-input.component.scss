@@ -2,10 +2,11 @@
 
 .root {
     display: grid;
-    grid-template-rows: auto auto;
+    grid-template-rows: 1fr 1fr;
 }
 
-input {
+div {
+    cursor: text;
     font-size: 2rem;
     width: 2rem;
     background: none;
@@ -15,17 +16,17 @@ input {
     text-transform: uppercase;
     caret-color: transparent;
 
-    &:focus {
+    &.focused {
         background-color: darken($color: $background-color, $amount: 2%);
         border-radius: 8px;
         border: 1px solid #acacac;
         color: $primary-color;
     }
 
-    &.value:focus::placeholder {
+    &.value.focused {
         color: $primary-color;
     }
-    &.value:not(:focus)::placeholder {
+    &.value:not(.focused) {
         color: $text-color;
     }
 

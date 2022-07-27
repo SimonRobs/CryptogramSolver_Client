@@ -3,9 +3,10 @@
         <h1>Cryptogram Solver</h1>
         <div class="cryptogram-root">
             <app-encrypted-letter-input
-                *ngFor="let letter of letters"
+                *ngFor="let letter of letters; index as i"
                 [(value)]="letter.value"
                 [(key)]="letter.key"
+                [focused]="i === focusedLetterIndex ? focusedField : null"
             ></app-encrypted-letter-input>
         </div>
         <hr />

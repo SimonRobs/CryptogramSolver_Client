@@ -49,6 +49,8 @@ export class KeyboardComponent {
         if (!event || !event.key) return;
         const keyPressed = convertToKeyboardKey(event.key.toLocaleLowerCase());
         if (!keyPressed) return;
+        event.preventDefault();
+        event.stopPropagation();
         this.handleKeyPress(keyPressed);
     }
 }

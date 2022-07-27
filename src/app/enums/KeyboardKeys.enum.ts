@@ -28,5 +28,6 @@ export enum KeyboardKeys {
     BACKSPACE = 'backspace',
     SPACE = 'space',
     ENTER = 'enter',
+    TAB = 'tab',
     APOSTROPHE = "'",
 }
