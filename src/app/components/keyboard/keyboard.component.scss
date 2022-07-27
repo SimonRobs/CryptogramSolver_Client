@@ -10,7 +10,9 @@
 }
 
 .keyboard-row {
-    display: flex;
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: repeat(10, minmax(0, 1fr));
     column-gap: 8px;
     margin: 0 8px 8px 8px;
 
@@ -23,13 +25,13 @@
     font-family: Arial, Helvetica, sans-serif;
     touch-action: manipulation;
     cursor: pointer;
-    display: flex;
+    display: grid;
     font-size: medium;
     justify-content: center;
     align-items: center;
-    flex-grow: 1;
     text-transform: uppercase;
     height: 54px;
+    width: 100%;
     border-radius: 4px;
     background-color: $background-color-light;
 
@@ -42,20 +44,21 @@
 
     &.spacer1 {
         background-color: inherit;
-        flex-grow: 0.5;
     }
     &.spacer2 {
         background-color: inherit;
-        flex-grow: 2;
     }
-    &.delete {
-        flex-grow: 2;
+    &.backspace {
+        grid-column: 9 / 11;
+        & .delete-icon {
+            display: grid;
+        }
     }
     &.space {
-        flex-grow: 9;
+        grid-column: 1 / 8;
     }
     &.enter {
-        flex-grow: 2;
+        grid-column: 8 / 11;
         background-color: $primary-color;
         color: $primary-contrast-color;
     }

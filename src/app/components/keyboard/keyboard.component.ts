@@ -5,7 +5,9 @@ import {
     Input,
     Output,
 } from '@angular/core';
-import KeyboardKey from 'src/app/models/KeyboardKey';
+import { SvgIconRegistryService } from 'angular-svg-icon';
+import { KeyboardKeys } from 'src/app/enums/KeyboardKeys.enum';
+import { convertToKeyboardKey } from 'src/app/helpers/convertToKeyboardKey';
 
 @Component({
     selector: 'app-keyboard',
@@ -14,13 +16,15 @@ import KeyboardKey from 'src/app/models/KeyboardKey';
 })
 export class KeyboardComponent {
     @Input() actionTitle: string = 'Enter';
-    @Output('keyup') keyUp = new EventEmitter<string>();
-
+    @Output('keyup') keyUp = new EventEmitter<KeyboardKeys>();
+    keyboardKeys = KeyboardKeys;
     keyboardRows: string[][] = [
         ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p'],
-        ['s1', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 's1'],
-        ['s2', 'z', 'x', 'c', 'v', 'b', 'n', 'm', '⌫'],
+        ['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', "'"],
+        ['s1', 'z', 'x', 'c', 'v', 'b', 'n', 'm', 'backspace'],
     ];
+
+    constructor(private _: SvgIconRegistryService) {}
 
     getKeyClasses(key: string): string[] {
         const classes = ['keyboard-key'];
@@ -34,17 +38,17 @@ export class KeyboardComponent {
         return '';
     }
 
-    handleKeyPress(key: string) {
-        console.log(key);
+    handleKeyPress(key: KeyboardKeys | string) {
+        if (typeof key === 'string')
+            this.keyUp.emit(convertToKeyboardKey(key)!);
+        else this.keyUp.emit(key);
     }
 
     @HostListener('window:keyup', ['$event'])
     onKeyUp(event: KeyboardEvent) {
-        if (this.isAlphabet(event.key) || event.key === ' ')
-            this.handleKeyPress(event.key);
-    }
-
-    private isAlphabet(value: string): boolean {
-        return value.match(/^[A-Za-z]$/) !== null;
+        if (!event || !event.key) return;
+        const keyPressed = convertToKeyboardKey(event.key.toLocaleLowerCase());
+        if (!keyPressed) return;
+        this.handleKeyPress(keyPressed);
     }
 }

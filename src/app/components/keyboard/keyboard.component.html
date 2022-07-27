@@ -1,13 +1,26 @@
 <div class="container">
     <div class="keyboard-row" *ngFor="let row of keyboardRows">
-        <div
-            role="button"
-            *ngFor="let key of row"
-            [ngClass]="getKeyClasses(key)"
-            (click)="handleKeyPress(key)"
-        >
-            {{ getKeyContent(key) }}
-        </div>
+        <ng-container *ngFor="let key of row">
+            <div
+                *ngIf="key !== 'backspace'"
+                role="button"
+                [ngClass]="getKeyClasses(key)"
+                (click)="handleKeyPress(key)"
+            >
+                {{ getKeyContent(key) }}
+            </div>
+            <div
+                *ngIf="key === 'backspace'"
+                role="button"
+                class="keyboard-key backspace"
+                (click)="handleKeyPress('backspace')"
+            >
+                <svg-icon
+                    src="assets/icons/delete-icon.svg"
+                    svgClass="delete-icon"
+                ></svg-icon>
+            </div>
+        </ng-container>
     </div>
     <div class="keyboard-row actions">
         <div

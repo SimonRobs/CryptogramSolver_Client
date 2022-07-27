@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { KeyboardKeys } from './enums/KeyboardKeys.enum';
 import EncryptedLetter from './models/EncryptedLetter';
 
 @Component({
@@ -15,7 +16,8 @@ export class AppComponent {
         { value: 'S', key: '' },
     ];
 
-    handleKeyUp(key: string) {
-        // console.log(key);
+    handleKeyUp(key: KeyboardKeys) {
+        if (typeof key === 'object') return; // It's the event triggering twice
+        // TODO: Handle keyboard key press
     }
 }
