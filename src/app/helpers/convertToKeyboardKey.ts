@@ -13,6 +13,9 @@ export const convertToKeyboardKey = (key: string): KeyboardKeys | null => {
             return KeyboardKeys.BACKSPACE;
         case 'enter':
             return KeyboardKeys.ENTER;
+        case 'shift':
+        case 'lock':
+            return KeyboardKeys.LOCK;
         default:
             return null;
     }

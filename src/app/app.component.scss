@@ -12,7 +12,14 @@
 
 .cryptogram-root {
     display: inline-flex;
+    flex-wrap: wrap;
+    justify-content: center;
     column-gap: 8px;
+
+    & .cryptogram-word {
+        display: inline-flex;
+        margin-right: 2rem;
+    }
 }
 
 .solve-button {

@@ -49,9 +49,25 @@
         background-color: inherit;
     }
     &.backspace {
+        background-color: $background-color-disabled;
         grid-column: 9 / 11;
         & .delete-icon {
             display: grid;
+            fill: $text-color;
+        }
+    }
+    &.lock {
+        display: grid;
+        &.filled {
+            & .lock-icon {
+                fill: $text-color;
+            }
+        }
+        &.outlined {
+            background-color: $background-color-disabled;
+            & .lock-icon {
+                stroke: $text-color;
+            }
         }
     }
     &.space {

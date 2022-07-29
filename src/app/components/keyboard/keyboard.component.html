@@ -2,7 +2,7 @@
     <div class="keyboard-row" *ngFor="let row of keyboardRows">
         <ng-container *ngFor="let key of row">
             <div
-                *ngIf="key !== 'backspace'"
+                *ngIf="key !== 'backspace' && key !== 'lock'"
                 role="button"
                 [ngClass]="getKeyClasses(key)"
                 (click)="handleKeyPress(key)"
@@ -13,11 +13,30 @@
                 *ngIf="key === 'backspace'"
                 role="button"
                 class="keyboard-key backspace"
-                (click)="handleKeyPress('backspace')"
+                (click)="handleKeyPress(key)"
             >
                 <svg-icon
-                    src="assets/icons/delete-icon.svg"
+                    src="assets/icons/icon-delete.svg"
                     svgClass="delete-icon"
+                ></svg-icon>
+            </div>
+            <div
+                *ngIf="key === 'lock'"
+                role="button"
+                [ngClass]="[
+                    'keyboard-key',
+                    'lock',
+                    lockToggled ? 'filled' : 'outlined'
+                ]"
+                (click)="handleKeyPress(key)"
+            >
+                <svg-icon
+                    [src]="
+                        lockToggled
+                            ? 'assets/icons/icon-lock-fill.svg'
+                            : 'assets/icons/icon-lock.svg'
+                    "
+                    svgClass="lock-icon"
                 ></svg-icon>
             </div>
         </ng-container>

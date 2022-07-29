@@ -15,13 +15,14 @@ import { convertToKeyboardKey } from 'src/app/helpers/convertToKeyboardKey';
     styleUrls: ['./keyboard.component.scss'],
 })
 export class KeyboardComponent {
-    @Input() actionTitle: string = 'Enter';
+    @Input() actionTitle = 'Enter';
+    @Input() lockToggled = false;
     @Output('keyup') keyUp = new EventEmitter<KeyboardKeys>();
     keyboardKeys = KeyboardKeys;
     keyboardRows: string[][] = [
         ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p'],
         ['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', "'"],
-        ['s1', 'z', 'x', 'c', 'v', 'b', 'n', 'm', 'backspace'],
+        ['lock', 'z', 'x', 'c', 'v', 'b', 'n', 'm', 'backspace'],
     ];
 
     constructor(private _: SvgIconRegistryService) {}
