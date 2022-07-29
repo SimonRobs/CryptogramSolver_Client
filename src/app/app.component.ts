@@ -9,7 +9,7 @@ import EncryptedWord from './models/EncryptedWord';
     styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-    words: EncryptedWord[] = cryptogramEasy;
+    words: EncryptedWord[] = [{ letters: [{ value: '', key: '' }] }]; // cryptogramEasy;
 
     focusedWordIndex = 0;
     focusedLetterIndex = 0;
@@ -58,6 +58,10 @@ export class AppComponent {
     }
 
     private removeFocusedLetter() {
+        if (this.focusedWordIndex === 0 && this.focusedLetterIndex === 0) {
+            this.setFocusedLetterContent();
+            return;
+        }
         this.words[this.focusedWordIndex].letters.splice(
             this.focusedLetterIndex,
             1
