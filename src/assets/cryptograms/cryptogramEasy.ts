@@ -1,5 +1,5 @@
-import EncryptedLetter from 'src/app/models/EncryptedLetter';
-import EncryptedWord from 'src/app/models/EncryptedWord';
+import EncryptedWord from "src/app/models/EncryptedWord";
+
 
 export const cryptogramEasy: EncryptedWord[] = [
     {

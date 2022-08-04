@@ -1,4 +1,5 @@
 @import '../../../variables.scss';
+@import '../../../mixins.scss';
 
 .root {
     display: grid;
@@ -33,5 +34,16 @@ div {
     &.key {
         font-size: 1.5rem;
         color: #999;
+    }
+}
+
+@include phone {
+    div {
+        font-size: 1.5rem;
+        width: 1.5rem;
+
+        &.key {
+            font-size: 1rem;
+        }
     }
 }
