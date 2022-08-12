@@ -10,7 +10,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "heroku-postbuild": "ng build --configuration \"production\"",
+    "heroku-postbuild": "ng build --configuration production",
     "dev": "ng serve --open --host=192.168.2.35"
   },
   "private": true,
