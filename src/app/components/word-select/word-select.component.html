@@ -1,0 +1,6 @@
+<p *ngIf="word.values.length === 1; else selectBlock">{{word.values[0]}}</p>
+<ng-template #selectBlock>
+  <select>
+    <option *ngFor="let value of word.values" [value]="value">{{ value }}</option>
+  </select>
+</ng-template>

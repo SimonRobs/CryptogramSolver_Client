@@ -1,0 +1,15 @@
+@import '../../../variables.scss';
+@import '../../../mixins.scss';
+
+* {
+  text-transform: uppercase;
+  font-size: $text-large;
+  letter-spacing: 2px;
+}
+
+
+@include phone {
+  * {
+    font-size: $text-normal;
+  }
+}

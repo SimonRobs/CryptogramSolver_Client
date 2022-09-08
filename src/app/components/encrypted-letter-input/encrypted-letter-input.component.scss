@@ -8,8 +8,8 @@
 
 div {
     cursor: text;
-    font-size: 2rem;
-    width: 2rem;
+    font-size: $text-large;
+    width: $text-large;
     background: none;
     border: 1px solid transparent;
     text-align: center;
@@ -32,15 +32,15 @@ div {
     }
 
     &.key {
-        font-size: 1.5rem;
+        font-size: $text-normal;
         color: #999;
     }
 }
 
 @include phone {
     div {
-        font-size: 1.5rem;
-        width: 1.5rem;
+        font-size: $text-normal;
+        width: $text-normal;
 
         &.key {
             font-size: 1rem;
