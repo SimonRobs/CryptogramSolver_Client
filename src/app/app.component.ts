@@ -13,9 +13,20 @@ import { SolverService } from './services/solver/solver.service';
 })
 export class AppComponent {
     ScreenStates = ScreenStates;
-    screen: ScreenStates = ScreenStates.INPUT;
+    screen: ScreenStates = ScreenStates.RESULT;
 
-    handleCryptogramSubmit() {
+    constructor(private solverService: SolverService) {}
+
+    handleCryptogramSubmit(cryptogram: EncryptedWord[]) {
+        this.solverService.sendCryptogram(cryptogram);
         this.screen = ScreenStates.LOADING;
+    }
+
+    handleCryptogramSolved() {
+        this.screen = ScreenStates.RESULT;
+    }
+
+    handleCryptogramReset() {
+        this.screen = ScreenStates.INPUT;
     }
 }

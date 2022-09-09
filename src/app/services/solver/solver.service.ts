@@ -13,6 +13,7 @@ export class SolverService {
 
     constructor(private socket: Socket) {
         this._result = new BehaviorSubject<CryptogramResult>({ words: [] });
+
         this.socket
             .fromEvent<string>(SocketMessages.ANSWER)
             .subscribe((data: string) => this.parseResult(data));
@@ -20,6 +21,10 @@ export class SolverService {
 
     get result(): Observable<CryptogramResult> {
         return this._result.asObservable();
+    }
+
+    get programExit(): Observable<void> {
+        return this.socket.fromEvent<void>(SocketMessages.DONE);
     }
 
     sendCryptogram(words: EncryptedWord[]) {

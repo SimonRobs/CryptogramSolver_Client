@@ -9,7 +9,7 @@ import { cryptogramEasy } from 'src/assets/cryptograms/cryptogramEasy';
     styleUrls: ['./cryptogram-input.component.scss'],
 })
 export class CryptogramInputComponent {
-    @Output() submit: EventEmitter<void> = new EventEmitter();
+    @Output() submit: EventEmitter<EncryptedWord[]> = new EventEmitter();
 
     words: EncryptedWord[] = cryptogramEasy;
 
@@ -56,7 +56,7 @@ export class CryptogramInputComponent {
     }
 
     private handleEnterKey() {
-        this.submit.emit();
+        this.submit.emit(this.words);
     }
 
     private setFocusedLetterContent(content?: string): void {

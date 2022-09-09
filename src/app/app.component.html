@@ -1,15 +1,25 @@
 <div class="root">
     <h1>Cryptogram Solver</h1>
     <div class="content" [ngSwitch]="screen">
+        <!-- CRYPTOGRAM INPUT -->
         <app-cryptogram-input
             *ngSwitchCase="ScreenStates.INPUT"
-            (submit)="handleCryptogramSubmit()"
-        ></app-cryptogram-input>
+            (submit)="handleCryptogramSubmit($event)"
+        >
+        </app-cryptogram-input>
 
-        <app-loading *ngSwitchCase="ScreenStates.LOADING"></app-loading>
+        <!-- LOADING SCREEN -->
+        <app-loading
+            *ngSwitchCase="ScreenStates.LOADING"
+            (solved)="handleCryptogramSolved()"
+        >
+        </app-loading>
 
+        <!-- SOLVER RESULT -->
         <app-cryptogram-result
             *ngSwitchCase="ScreenStates.RESULT"
-        ></app-cryptogram-result>
+            (reset)="handleCryptogramReset()"
+        >
+        </app-cryptogram-result>
     </div>
 </div>

@@ -1,6 +1,13 @@
+@import '../../../mixins.scss';
 @import '../../../variables.scss';
 
-#result-root {
+#root {
+    display: grid;
+    grid-template-rows: 1fr auto;
+    height: 100%;
+}
+
+#result-div {
     display: flex;
     flex-wrap: wrap;
     column-gap: 12px;
@@ -9,9 +16,28 @@
     margin: 2em;
     padding: 1em;
     border-radius: 0.5em;
+}
 
-    & .reset-cryptogram-button {
-        background-color: $primary-color;
-        color: $primary-contrast-color;
+.reset-cryptogram-button {
+    user-select: none;
+    background-color: $primary-color;
+    color: $primary-contrast-color;
+    padding: 16px;
+    margin: 8px auto;
+    border-radius: 4px;
+    width: 300px;
+    touch-action: manipulation;
+    cursor: pointer;
+    &:hover {
+        filter: brightness(0.98);
+    }
+    &:active {
+        filter: brightness(1.05);
+    }
+
+    @include phone {
+        width: 100%;
+        margin: 0 8px 0 0;
+        border-radius: 0;
     }
 }
