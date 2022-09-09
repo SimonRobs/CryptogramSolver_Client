@@ -1,0 +1,16 @@
+@import '../../../variables.scss';
+
+#root {
+    display: grid;
+    height: 100%;
+    justify-content: center;
+    align-content: center;
+}
+
+.letter-container {
+    display: inline-flex;
+}
+
+.solving-p {
+    color: $primary-color;
+}

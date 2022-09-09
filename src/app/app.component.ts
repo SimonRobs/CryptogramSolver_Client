@@ -14,4 +14,8 @@ import { SolverService } from './services/solver/solver.service';
 export class AppComponent {
     ScreenStates = ScreenStates;
     screen: ScreenStates = ScreenStates.INPUT;
+
+    handleCryptogramSubmit() {
+        this.screen = ScreenStates.LOADING;
+    }
 }

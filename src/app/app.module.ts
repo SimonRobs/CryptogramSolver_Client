@@ -13,8 +13,12 @@ import { WordSelectComponent } from './components/word-select/word-select.compon
 import { CryptogramResultComponent } from './components/cryptogram-result/cryptogram-result.component';
 import { CryptogramInputComponent } from './components/cryptogram-input/cryptogram-input.component';
 import { LoadingComponent } from './components/loading/loading.component';
+import { RandomEncryptedLetterComponent } from './components/random-encrypted-letter/random-encrypted-letter.component';
 
-const config: SocketIoConfig = { url: environment.serverUrl || `${APP_URL}:${PORT}`, options: {} };
+const config: SocketIoConfig = {
+    url: environment.serverUrl || `${APP_URL}:${PORT}`,
+    options: {},
+};
 AngularSvgIconModule.forRoot();
 
 @NgModule({
@@ -26,6 +30,7 @@ AngularSvgIconModule.forRoot();
         CryptogramResultComponent,
         CryptogramInputComponent,
         LoadingComponent,
+        RandomEncryptedLetterComponent,
     ],
     imports: [
         BrowserModule,

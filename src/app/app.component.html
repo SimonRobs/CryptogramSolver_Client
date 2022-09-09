@@ -3,6 +3,7 @@
     <div class="content" [ngSwitch]="screen">
         <app-cryptogram-input
             *ngSwitchCase="ScreenStates.INPUT"
+            (submit)="handleCryptogramSubmit()"
         ></app-cryptogram-input>
 
         <app-loading *ngSwitchCase="ScreenStates.LOADING"></app-loading>
