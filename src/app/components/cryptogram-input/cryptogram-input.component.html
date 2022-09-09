@@ -1,15 +1,17 @@
 <div class="cryptogram-root">
-    <div class="cryptogram-word" *ngFor="let word of words; index as i">
-        <app-encrypted-letter-input
-            *ngFor="let letter of word.letters; index as j"
-            [(value)]="letter.value"
-            [(key)]="letter.key"
-            [focused]="
-                i === focusedWordIndex && j === focusedLetterIndex
-                    ? focusedField
-                    : null
-            "
-        ></app-encrypted-letter-input>
+    <div class="cryptogram-words">
+        <div class="cryptogram-word" *ngFor="let word of words; index as i">
+            <app-encrypted-letter-input
+                *ngFor="let letter of word.letters; index as j"
+                [(value)]="letter.value"
+                [(key)]="letter.key"
+                [focused]="
+                    i === focusedWordIndex && j === focusedLetterIndex
+                        ? focusedField
+                        : null
+                "
+            ></app-encrypted-letter-input>
+        </div>
     </div>
     <app-keyboard
         (keyup)="handleKeyUp($event)"

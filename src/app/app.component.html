@@ -1,16 +1,14 @@
 <div class="root">
-    <div class="content">
-        <h1>Cryptogram Solver</h1>
-        <div [ngSwitch]="screen">
-            <app-cryptogram-input
-                *ngSwitchCase="ScreenStates.INPUT"
-            ></app-cryptogram-input>
+    <h1>Cryptogram Solver</h1>
+    <div class="content" [ngSwitch]="screen">
+        <app-cryptogram-input
+            *ngSwitchCase="ScreenStates.INPUT"
+        ></app-cryptogram-input>
 
-            <app-loading *ngSwitchCase="ScreenStates.LOADING"></app-loading>
+        <app-loading *ngSwitchCase="ScreenStates.LOADING"></app-loading>
 
-            <app-cryptogram-result
-                *ngSwitchCase="ScreenStates.RESULT"
-            ></app-cryptogram-result>
-        </div>
+        <app-cryptogram-result
+            *ngSwitchCase="ScreenStates.RESULT"
+        ></app-cryptogram-result>
     </div>
 </div>
