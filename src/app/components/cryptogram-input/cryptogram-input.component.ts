@@ -12,6 +12,7 @@ export class CryptogramInputComponent {
     @Output() submit: EventEmitter<EncryptedWord[]> = new EventEmitter();
 
     words: EncryptedWord[] = cryptogramEasy;
+    // words: EncryptedWord[] = [{ letters: [{ key: '', value: '' }] }];
 
     focusedWordIndex = 0;
     focusedLetterIndex = 0;
