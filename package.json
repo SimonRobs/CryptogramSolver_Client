@@ -11,6 +11,7 @@
         "watch": "ng build --watch --configuration development",
         "test": "ng test",
         "production-build": "ng build --configuration production",
+        "production-test": "ng test --browsers=ChromeHeadless --watch=false",
         "dev": "ng serve --open --host=192.168.2.35"
     },
     "private": true,
