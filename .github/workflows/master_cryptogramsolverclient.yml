@@ -25,7 +25,7 @@ jobs:
               run: |
                   yarn install
                   yarn run production-build
-                  yarn run test --if-present
+                  yarn run test
 
             - name: Upload artifact for deployment job
               uses: actions/upload-artifact@v2
