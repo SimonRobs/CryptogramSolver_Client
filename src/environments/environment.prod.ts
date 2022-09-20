@@ -1,4 +1,4 @@
 export const environment = {
-  production: true,
-  serverUrl: 'https://cryptogramsolver-server.herokuapp.com/',
+    production: true,
+    serverUrl: 'https://cryptogramsolverserver.azurewebsites.net/',
 };
