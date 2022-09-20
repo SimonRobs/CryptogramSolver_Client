@@ -27,7 +27,7 @@ jobs:
                   yarn run production-build
                   yarn run production-test
 
-            - name: Zip artifact for deployment
+            - name: Zip artifact for deployment job
               run: zip release.zip ./* -r
 
             - name: Upload artifact for deployment job
@@ -49,8 +49,8 @@ jobs:
               with:
                   name: solver-client
 
-            - name: unzip artifact for deployment
-                run: |
+            - name: Unzip artifact for deployment job
+              run: |
                   unzip release.zip
                   rm release.zip
 
