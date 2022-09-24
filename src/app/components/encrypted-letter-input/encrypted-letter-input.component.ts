@@ -22,4 +22,10 @@ export class EncryptedLetterInputComponent {
 
     @Input() key: string | undefined;
     @Output() keyChange = new EventEmitter<string>();
+
+    @Output() click = new EventEmitter<void>();
+
+    handleLetterClick() {
+        this.click.emit();
+    }
 }

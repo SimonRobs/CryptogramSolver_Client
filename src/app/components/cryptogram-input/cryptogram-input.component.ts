@@ -32,7 +32,8 @@ export class CryptogramInputComponent implements OnInit {
                 this.handleBackspaceKey();
                 break;
             case KeyboardKeys.SPACE:
-                this.handleSpaceKey();
+                // Only handle space if we are at the end of the cryptogram
+                if (this.isEndOfCryptogramFocused()) this.handleSpaceKey();
                 break;
             case KeyboardKeys.LOCK:
                 this.handleLockKey();
@@ -42,8 +43,13 @@ export class CryptogramInputComponent implements OnInit {
                 break;
             default:
                 this.setFocusedLetterContent(key);
-                this.addEncryptedLetter();
+                this.handleLetterIncrement();
         }
+    }
+
+    handleLetterClick(wordIndex: number, letterIndex: number) {
+        this.focusedWordIndex = wordIndex;
+        this.focusedLetterIndex = letterIndex;
     }
 
     private handleSpaceKey() {
@@ -76,6 +82,21 @@ export class CryptogramInputComponent implements OnInit {
         } else {
             focusedLetter.key = content;
             focusedLetter.value = '';
+        }
+    }
+
+    private handleLetterIncrement() {
+        const focusedWord = this.words[this.focusedWordIndex];
+        if (this.isEndOfCryptogramFocused()) {
+            // Focused Letter is last letter of last word: Add a new letter
+            this.addEncryptedLetter();
+        } else {
+            if (this.focusedLetterIndex < focusedWord.letters.length - 1) {
+                this.focusedLetterIndex++;
+            } else {
+                this.focusedLetterIndex = 0;
+                this.focusedWordIndex++;
+            }
         }
     }
 
@@ -113,5 +134,13 @@ export class CryptogramInputComponent implements OnInit {
 
     private removeEncryptedWord() {
         this.words.splice(this.focusedWordIndex, 1);
+    }
+
+    private isEndOfCryptogramFocused(): boolean {
+        return (
+            this.focusedWordIndex === this.words.length - 1 &&
+            this.focusedLetterIndex ===
+                this.words[this.focusedWordIndex].letters.length - 1
+        );
     }
 }

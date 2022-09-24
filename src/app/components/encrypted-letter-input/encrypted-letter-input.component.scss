@@ -16,6 +16,8 @@ div {
     outline: none;
     text-transform: uppercase;
     caret-color: transparent;
+    cursor: pointer;
+    touch-action: manipulation;
 
     &.focused {
         background-color: darken($color: $background-color, $amount: 2%);

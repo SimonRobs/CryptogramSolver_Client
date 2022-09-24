@@ -1,4 +1,4 @@
-<div class="root">
+<div class="root" (click)="handleLetterClick()">
     <div class="value" [ngClass]="focused === 'value' ? 'focused' : ''">
         {{ value && value.length > 0 ? value : '_' }}
     </div>

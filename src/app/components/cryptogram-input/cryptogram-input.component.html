@@ -3,6 +3,7 @@
         <div class="cryptogram-word" *ngFor="let word of words; index as i">
             <app-encrypted-letter-input
                 *ngFor="let letter of word.letters; index as j"
+                (click)="handleLetterClick(i, j)"
                 [(value)]="letter.value"
                 [(key)]="letter.key"
                 [focused]="

@@ -1,9 +1,6 @@
 import { Component } from '@angular/core';
-import { cryptogramEasy } from 'src/assets/cryptograms/cryptogramEasy';
-import { KeyboardKeys } from './enums/KeyboardKeys.enum';
 import { ScreenStates } from './enums/ScreenStates';
 import SolverResultStatus from './enums/SolverResultStatus';
-import { CryptogramResult } from './models/CryptogramResult';
 import EncryptedWord from './models/EncryptedWord';
 import { SolverService } from './services/solver/solver.service';
 
@@ -15,8 +12,9 @@ import { SolverService } from './services/solver/solver.service';
 export class AppComponent {
     ScreenStates = ScreenStates;
     screen: ScreenStates = ScreenStates.INPUT;
-    cryptogram: EncryptedWord[] = [{ letters: [{ key: '', value: '' }] }];
     resultStatus = SolverResultStatus.NONE;
+
+    cryptogram: EncryptedWord[] = [{ letters: [{ key: '', value: '' }] }];
 
     constructor(private solverService: SolverService) {}
 
