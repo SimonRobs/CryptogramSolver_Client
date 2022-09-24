@@ -9,27 +9,33 @@ import { SolverService } from 'src/app/services/solver/solver.service';
 })
 export class LoadingComponent implements OnDestroy {
     @Output() solved = new EventEmitter<void>();
+    @Output() timeout = new EventEmitter<void>();
     @Output() canceled = new EventEmitter<void>();
 
     private N_LETTERS = 9;
 
     letters: number[] = [];
 
-    subscription: Subscription;
+    subscriptions: Subscription[] = [];
 
     constructor(private solverService: SolverService) {
         this.populateLetters();
-        this.subscription = this.solverService.programExit.subscribe(() =>
-            this.solved.emit()
+        this.subscriptions.push(
+            this.solverService.programExit.subscribe(() => this.solved.emit())
+        );
+        this.subscriptions.push(
+            this.solverService.programTimeout.subscribe(() =>
+                this.timeout.emit()
+            )
         );
     }
 
     ngOnDestroy(): void {
-        this.subscription.unsubscribe();
+        this.subscriptions.forEach((sub) => sub.unsubscribe());
     }
 
     cancelSolving() {
-        this.subscription.unsubscribe();
+        this.subscriptions.forEach((sub) => sub.unsubscribe());
         this.solverService.cancelSolving();
         this.canceled.emit();
     }

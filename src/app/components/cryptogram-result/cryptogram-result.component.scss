@@ -16,9 +16,13 @@
     margin: 2em 2em auto 2em;
     padding: 1em;
     border-radius: 0.5em;
+
+    &.timeout {
+        margin: 2em;
+    }
 }
 
-.reset-cryptogram-button {
+.bottom-button {
     user-select: none;
     background-color: $primary-color;
     color: $primary-contrast-color;

@@ -13,6 +13,7 @@
         <app-loading
             *ngSwitchCase="ScreenStates.LOADING"
             (solved)="handleCryptogramSolved()"
+            (timeout)="handleSolverTimeout()"
             (canceled)="handleSolvingCanceled()"
         >
         </app-loading>
@@ -20,6 +21,8 @@
         <!-- SOLVER RESULT -->
         <app-cryptogram-result
             *ngSwitchCase="ScreenStates.RESULT"
+            [resultStatus]="resultStatus"
+            (retry)="handleCryptogramRetry()"
             (reset)="handleCryptogramReset()"
         >
         </app-cryptogram-result>

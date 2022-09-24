@@ -1,14 +1,21 @@
-<div id="root">
-    <div id="result-div">
-        <app-word-select *ngFor="let word of result.words" [word]="word">
-        </app-word-select>
-    </div>
+<div style="height: 100%" [ngSwitch]="resultStatus">
+    <div id="root" *ngSwitchCase="ResultStatuses.SUCCESS">
+        <div id="result-div">
+            <app-word-select *ngFor="let word of result.words" [word]="word">
+            </app-word-select>
+        </div>
 
-    <div
-        role="button"
-        class="reset-cryptogram-button"
-        (click)="resetCryptogram()"
-    >
-        New Cryptogram
+        <div role="button" class="bottom-button" (click)="resetCryptogram()">
+            New Cryptogram
+        </div>
+    </div>
+    <div id="root" *ngSwitchCase="ResultStatuses.TIMEOUT">
+        <div id="result-div" class="timeout">
+            The algorithm timed out... Try simplifying the cryptogram.
+        </div>
+
+        <div role="button" class="bottom-button" (click)="reenterCryptogram()">
+            Retry
+        </div>
     </div>
 </div>

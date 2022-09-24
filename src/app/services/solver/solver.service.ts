@@ -2,7 +2,10 @@ import { Injectable } from '@angular/core';
 import { Socket } from 'ngx-socket-io';
 import { BehaviorSubject, Observable } from 'rxjs';
 import SocketMessages from 'src/app/enums/SocketMessages';
-import { CryptogramResult } from 'src/app/models/CryptogramResult';
+import {
+    CryptogramResult,
+    CryptogramResultWord,
+} from 'src/app/models/CryptogramResult';
 import EncryptedWord from 'src/app/models/EncryptedWord';
 
 @Injectable({
@@ -21,6 +24,10 @@ export class SolverService {
 
     get result(): Observable<CryptogramResult> {
         return this._result.asObservable();
+    }
+
+    get programTimeout(): Observable<void> {
+        return this.socket.fromEvent<void>(SocketMessages.TIMEOUT);
     }
 
     get programExit(): Observable<void> {
@@ -53,7 +60,8 @@ export class SolverService {
         const wordsSplit = result.split(' ');
         wordsSplit.pop(); // Remove the 'Enter' character
 
-        const foundWords = [...this._result.value.words];
+        const foundWords: CryptogramResultWord[] = [];
+
         if (foundWords.length === 0) {
             wordsSplit.forEach((word: string) =>
                 foundWords.push({ values: [word] })
