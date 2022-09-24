@@ -1,27 +1,27 @@
 # CryptogramSolver
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.5.
+CryptogramSolver offers an interface to solve cryptograms from the [Cryptogram](https://apps.apple.com/tr/app/cryptogram-decrypt-quotes/id1549190465) app.  
+It uses a custom made server and solving algorithm.
 
-## Development server
+## Screenshots
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+<div style="display:grid; grid-template-columns:1fr 1fr 1fr;column-gap:8px">
+  <img style="height:100%" src='./src/assets/images/Input.jpg'>
+  <img style="height:100%" src='./src/assets/images/Loading.jpg'>
+  <img style="height:100%" src='./src/assets/images/Result.jpg'>
+</div>
+</br>
 
-## Code scaffolding
+## Usage
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+To use the application start by downloading the [Server](https://github.com/SimonRobs/CryptogramSolver_Server). Follow installation instructions and run the server.  
+Then, follow these steps:
 
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+1. Clone this repository
+2. Find your IP and change the IP to your computer's local IP in [`/CryptogramSolver_Client/src/app/constants.ts`](./src/app/constants.ts)
+3. On a terminal, run
+    ```
+    yarn install
+    yarn dev
+    ```
+4. Open a browser and navigate to: `http://<YOUR_IP>:4200`
