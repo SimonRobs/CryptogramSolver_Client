@@ -35,6 +35,7 @@ export class SolverService {
     }
 
     sendCryptogram(words: EncryptedWord[]) {
+        this._result.next({ words: [] });
         if (words.length > 0) {
             const lastWord = words[words.length - 1];
             const lastLetter = lastWord.letters[lastWord.letters.length - 1];
@@ -60,8 +61,9 @@ export class SolverService {
         const wordsSplit = result.split(' ');
         wordsSplit.pop(); // Remove the 'Enter' character
 
-        const foundWords: CryptogramResultWord[] = [];
-
+        const foundWords: CryptogramResultWord[] = [
+            ...this._result.value.words,
+        ];
         if (foundWords.length === 0) {
             wordsSplit.forEach((word: string) =>
                 foundWords.push({ values: [word] })
