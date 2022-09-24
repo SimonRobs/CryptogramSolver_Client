@@ -13,7 +13,7 @@ import { SolverService } from './services/solver/solver.service';
 })
 export class AppComponent {
     ScreenStates = ScreenStates;
-    screen: ScreenStates = ScreenStates.RESULT;
+    screen: ScreenStates = ScreenStates.INPUT;
 
     constructor(private solverService: SolverService) {}
 

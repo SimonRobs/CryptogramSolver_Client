@@ -1,12 +1,18 @@
+@import '../../../mixins.scss';
 @import '../../../variables.scss';
 
 .container {
     max-width: 512px;
+    width: 512px;
     row-gap: 8px;
     margin: auto;
     user-select: none;
     -moz-user-select: none;
     -webkit-user-select: none;
+
+    @include phone {
+        width: 100vw;
+    }
 }
 
 .keyboard-row {
