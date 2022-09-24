@@ -1,24 +1,29 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { KeyboardKeys } from 'src/app/enums/KeyboardKeys.enum';
 import EncryptedWord from 'src/app/models/EncryptedWord';
-import { cryptogramEasy } from 'src/assets/cryptograms/cryptogramEasy';
-import { cryptogramHard } from 'src/assets/cryptograms/cryptogramHard';
-import { cryptogramMedium } from 'src/assets/cryptograms/cryptogramMedium';
 
 @Component({
     selector: 'app-cryptogram-input',
     templateUrl: './cryptogram-input.component.html',
     styleUrls: ['./cryptogram-input.component.scss'],
 })
-export class CryptogramInputComponent {
-    @Output() submit: EventEmitter<EncryptedWord[]> = new EventEmitter();
+export class CryptogramInputComponent implements OnInit {
+    @Input() words!: EncryptedWord[];
+    @Output() wordsChange = new EventEmitter<EncryptedWord[]>();
 
-    // words: EncryptedWord[] = cryptogramHard;
-    words: EncryptedWord[] = [{ letters: [{ key: '', value: '' }] }];
+    @Output() submit: EventEmitter<void> = new EventEmitter();
 
     focusedWordIndex = 0;
     focusedLetterIndex = 0;
     focusedField: 'value' | 'key' = 'value';
+
+    ngOnInit(): void {
+        if (this.words.length > 0) {
+            this.focusedWordIndex = this.words.length - 1;
+            this.focusedLetterIndex =
+                this.words[this.focusedWordIndex].letters.length - 1;
+        }
+    }
 
     handleKeyUp(key: KeyboardKeys) {
         if (typeof key === 'object') return; // It's the event triggering twice
@@ -59,7 +64,7 @@ export class CryptogramInputComponent {
     }
 
     private handleEnterKey() {
-        this.submit.emit(this.words);
+        this.submit.emit();
     }
 
     private setFocusedLetterContent(content?: string): void {

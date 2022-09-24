@@ -4,7 +4,8 @@
         <!-- CRYPTOGRAM INPUT -->
         <app-cryptogram-input
             *ngSwitchCase="ScreenStates.INPUT"
-            (submit)="handleCryptogramSubmit($event)"
+            [(words)]="cryptogram"
+            (submit)="handleCryptogramSubmit()"
         >
         </app-cryptogram-input>
 
@@ -12,6 +13,7 @@
         <app-loading
             *ngSwitchCase="ScreenStates.LOADING"
             (solved)="handleCryptogramSolved()"
+            (canceled)="handleSolvingCanceled()"
         >
         </app-loading>
 

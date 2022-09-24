@@ -1,7 +1,9 @@
+@import '../../../mixins.scss';
 @import '../../../variables.scss';
 
 #root {
     display: grid;
+    grid-template-rows: 1fr auto;
     height: 100%;
     justify-content: center;
     align-content: center;
@@ -13,4 +15,28 @@
 
 .solving-p {
     color: $primary-color;
+}
+
+.cancel-solving-button {
+    user-select: none;
+    background-color: $primary-color;
+    color: $primary-contrast-color;
+    padding: 16px;
+    margin: 8px auto;
+    border-radius: 4px;
+    width: 300px;
+    touch-action: manipulation;
+    cursor: pointer;
+    &:hover {
+        filter: brightness(0.98);
+    }
+    &:active {
+        filter: brightness(1.05);
+    }
+
+    @include phone {
+        width: 100vw;
+        margin: 0 8px 0 0;
+        border-radius: 0;
+    }
 }

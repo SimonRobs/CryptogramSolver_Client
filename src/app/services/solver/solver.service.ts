@@ -28,7 +28,25 @@ export class SolverService {
     }
 
     sendCryptogram(words: EncryptedWord[]) {
+        if (words.length > 0) {
+            const lastWord = words[words.length - 1];
+            const lastLetter = lastWord.letters[lastWord.letters.length - 1];
+
+            // Pop the last letter if empty
+            if (lastLetter.value === '' && lastLetter.key === '') {
+                words[words.length - 1].letters.pop();
+            }
+
+            // Pop the last word if empty
+            if (words[words.length - 1].letters.length === 0) {
+                words.pop();
+            }
+        }
         this.socket.emit(SocketMessages.CRYPTOGRAM, words);
+    }
+
+    cancelSolving() {
+        this.socket.emit(SocketMessages.CANCEL);
     }
 
     private parseResult(result: string): void {

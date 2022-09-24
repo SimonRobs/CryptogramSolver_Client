@@ -14,11 +14,12 @@ import { SolverService } from './services/solver/solver.service';
 export class AppComponent {
     ScreenStates = ScreenStates;
     screen: ScreenStates = ScreenStates.INPUT;
+    cryptogram: EncryptedWord[] = [{ letters: [{ key: '', value: '' }] }];
 
     constructor(private solverService: SolverService) {}
 
-    handleCryptogramSubmit(cryptogram: EncryptedWord[]) {
-        this.solverService.sendCryptogram(cryptogram);
+    handleCryptogramSubmit() {
+        this.solverService.sendCryptogram(this.cryptogram);
         this.screen = ScreenStates.LOADING;
     }
 
@@ -26,7 +27,12 @@ export class AppComponent {
         this.screen = ScreenStates.RESULT;
     }
 
+    handleSolvingCanceled() {
+        this.screen = ScreenStates.INPUT;
+    }
+
     handleCryptogramReset() {
+        this.cryptogram = [{ letters: [{ key: '', value: '' }] }];
         this.screen = ScreenStates.INPUT;
     }
 }

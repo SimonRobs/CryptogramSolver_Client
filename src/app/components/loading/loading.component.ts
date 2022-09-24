@@ -9,6 +9,7 @@ import { SolverService } from 'src/app/services/solver/solver.service';
 })
 export class LoadingComponent implements OnDestroy {
     @Output() solved = new EventEmitter<void>();
+    @Output() canceled = new EventEmitter<void>();
 
     private N_LETTERS = 9;
 
@@ -27,7 +28,13 @@ export class LoadingComponent implements OnDestroy {
         this.subscription.unsubscribe();
     }
 
-    populateLetters() {
+    cancelSolving() {
+        this.subscription.unsubscribe();
+        this.solverService.cancelSolving();
+        this.canceled.emit();
+    }
+
+    private populateLetters() {
         for (let i = 0; i < this.N_LETTERS; ++i) {
             this.letters.push(i);
         }

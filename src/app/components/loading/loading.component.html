@@ -1,7 +1,13 @@
 <div id="root">
-    <h2 class="solving-p">Solving...</h2>
-    <div class="letter-container">
-        <app-random-encrypted-letter *ngFor="let _ of letters">
-        </app-random-encrypted-letter>
+    <div style="margin: auto">
+        <h2 class="solving-p">Solving...</h2>
+        <div class="letter-container">
+            <app-random-encrypted-letter *ngFor="let _ of letters">
+            </app-random-encrypted-letter>
+        </div>
+    </div>
+
+    <div role="button" class="cancel-solving-button" (click)="cancelSolving()">
+        Cancel
     </div>
 </div>
