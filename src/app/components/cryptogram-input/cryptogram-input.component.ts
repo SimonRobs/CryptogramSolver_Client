@@ -2,6 +2,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
 import { KeyboardKeys } from 'src/app/enums/KeyboardKeys.enum';
 import EncryptedWord from 'src/app/models/EncryptedWord';
 import { cryptogramEasy } from 'src/assets/cryptograms/cryptogramEasy';
+import { cryptogramMedium } from 'src/assets/cryptograms/cryptogramMedium';
 
 @Component({
     selector: 'app-cryptogram-input',
@@ -11,7 +12,7 @@ import { cryptogramEasy } from 'src/assets/cryptograms/cryptogramEasy';
 export class CryptogramInputComponent {
     @Output() submit: EventEmitter<EncryptedWord[]> = new EventEmitter();
 
-    words: EncryptedWord[] = cryptogramEasy;
+    words: EncryptedWord[] = cryptogramMedium;
     // words: EncryptedWord[] = [{ letters: [{ key: '', value: '' }] }];
 
     focusedWordIndex = 0;
