@@ -13,8 +13,8 @@ import { cryptogramMedium } from 'src/assets/cryptograms/cryptogramMedium';
 export class CryptogramInputComponent {
     @Output() submit: EventEmitter<EncryptedWord[]> = new EventEmitter();
 
-    words: EncryptedWord[] = cryptogramHard;
-    // words: EncryptedWord[] = [{ letters: [{ key: '', value: '' }] }];
+    // words: EncryptedWord[] = cryptogramHard;
+    words: EncryptedWord[] = [{ letters: [{ key: '', value: '' }] }];
 
     focusedWordIndex = 0;
     focusedLetterIndex = 0;
